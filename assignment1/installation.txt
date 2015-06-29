@@ -1,0 +1,53 @@
+Author(s): Connor Workman
+Last Edited June 29th, 2015, 1:00 PM
+
+The purpose of this installation document is to allow the Arch Linux system on the Missing Man Pages subnet of EC2 to be:
+	> Recreated in the event of a disaster
+	> Duplicated with consistent configurations between installations
+	> Explained to and understood by fellow system admins
+
+Getting Started:
+	1) Launch an instance in EC2
+		> Use the lab-cloud network, and the Missing Man Pages subnet
+		> Create a key-pair or use your existing key-pair and .pem file
+		> Do not proceed without the .pem file for your key-pair
+	2) Connect to the instance (SSH)
+		> Get the public DNS name of the instance (this will be used to SSH)
+		> Locate the private key file (.pem) and note the full path of the file
+		> Run chmod to modify the permissions on your private key file: chmod 400 example-key-pair.pem
+		> Run SSH with the private key file to connect to the public DNS with this command:
+			ssh -i /path/to/example-key-pair.pem root@public_dns_full_name
+			Note: The actual path and dns name should be filled in by administrator
+		> You should now be connected to the instance.  If the connection is rejected,
+			recheck that the public dns name is correct, and that the .pem file is where you claim.
+		> You now have root access to the Arch Linux instance that was launched.
+
+Root Configurations:
+	1) Changing the hostname
+		> Run this command to change the hostname in /etc/hostname:
+			hostnamectl set-hostname Arch64EC2
+		> Make sure it worked:
+			cat /etc/hostname
+		> Add the same hostname to the /etc/hosts file.
+			nano /etc/hosts
+			*add the hostname to the file*
+			Hit ctrl-x and type "y" to confirm file change.
+		> Reboot the system and reconnect (you will be allowed to connect when the status checks are complete)
+			reboot
+			ssh -i /path/to/example-key-pair.pem root@public_dns_name
+	2) Package management
+		> Setting up access to Arch User Repositories requires editing some text files.
+		> Edit the pacman.conf file with the following command:
+			nano /etc/pacman.conf
+			*Add the following lines to the bottom of the text file*
+			[archlinuxfr]
+			SigLevel = Never
+			Server = http://repo.archlinux.fr/$arch
+		> Install the "Yet AnOther User Repository Tool" (YAOURT) and some other goodies:
+			pacman -S yaourt net-tools bash-completion archey3 firefox ttf-dejavu ttf-droid ttf-inconsolata
+	3) Adding a user
+		
+
+User Configurations:
+
+
