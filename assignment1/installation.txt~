@@ -23,6 +23,11 @@ Getting Started:
 		> You now have root access to the Arch Linux instance that was launched.
 
 Root Configurations:
+	0) Set the password for root:
+		> Run this command to change password as root:
+			passwd
+			*enter the desired password, as prompted*
+			*enter the desired password again, as prompted*
 	1) Changing the hostname
 		> Run this command to change the hostname in /etc/hostname:
 			hostnamectl set-hostname Arch64EC2
@@ -35,18 +40,51 @@ Root Configurations:
 		> Reboot the system and reconnect (you will be allowed to connect when the status checks are complete)
 			reboot
 			ssh -i /path/to/example-key-pair.pem root@public_dns_name
-	2) Package management
-		> Setting up access to Arch User Repositories requires editing some text files.
+	2) Enable AURs
+		> Setting up access to Arch User Repositories requires editing a text file.
 		> Edit the pacman.conf file with the following command:
 			nano /etc/pacman.conf
-			*Add the following lines to the bottom of the text file*
-			[archlinuxfr]
-			SigLevel = Never
-			Server = http://repo.archlinux.fr/$arch
+			*Now add the following lines to the bottom of the text file*
+				[archlinuxfr]
+				SigLevel = Never
+				Server = http://repo.archlinux.fr/$arch
+	3) Add a less privileged user to the system to avoid running as root all the time
+		> Run this command to add a user:
+			useradd -m -g users -G wheel,storage,power -s /bin/bash example_username
+		> Run this command to set the user's password:
+			passwd example_username
+			*enter the desired password as prompted*
+			*re-enter the password as prompted*
+		> Run an update on the package manager:
+			pacman -Sy
+		> Install sudo
+			pacman -S sudo
 		> Install the "Yet AnOther User Repository Tool" (YAOURT) and some other goodies:
-			pacman -S yaourt net-tools bash-completion archey3 firefox ttf-dejavu ttf-droid ttf-inconsolata
-	3) Adding a user
-		
+			pacman -S yaourt net-tools bash-completion archey3 firefox ttf-dejavu ttf-droid ttf-inconsolata vim emacs
+	4) Enable user access via SSH
+		> We must first copy the authorized_keys file used by root into the user's /home/example_username/.ssh/ directory.
+			nano /root/.ssh/authorized_keys
+			*now copy and paste the contents into a text editor on your local system for later*
+		> Before we do this, we'll assume the user's identity with the following command:
+			sudo su example_username
+		> Make sure you are in the user's home directory (run the 'cd' command without arguments to navigate there)
+		> Create the ".ssh" directory in the home directory:
+			mkdir .ssh
+		> Apply the necessary permissions to the .ssh directory with this command:
+			chmod 700 .ssh
+		> Create a file called authorized_keys with this command:
+			touch .ssh/authorized_keys
+		> Apply necessary permissions to that file:
+			chmod 600 .ssh/authorized_keys
+		> Edit the authorized keys file with a text editor:
+			nano .ssh/authorized_keys
+		> Paste in the contents of the authorized_keys file that belongs to root (from the text editor on your local system)
+		> Save the modified file.
+		> Exit the user's system:
+			exit
+		> Now exit the system as root:
+			exit
+		> You should now be disconnected from the system.
 
 User Configurations:
 
