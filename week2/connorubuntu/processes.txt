@@ -1,0 +1,104 @@
+  PID TTY      STAT   TIME COMMAND
+    1 ?        Ss     0:01 /sbin/init
+    2 ?        S      0:00 [kthreadd]
+    3 ?        S      0:00 [ksoftirqd/0]
+    4 ?        S      0:00 [kworker/0:0]
+    5 ?        S<     0:00 [kworker/0:0H]
+    6 ?        S      0:00 [kworker/u30:0]
+    7 ?        S      0:00 [rcu_sched]
+    8 ?        R      0:00 [rcuos/0]
+    9 ?        S      0:00 [rcuos/1]
+   10 ?        S      0:00 [rcuos/2]
+   11 ?        S      0:00 [rcuos/3]
+   12 ?        S      0:00 [rcuos/4]
+   13 ?        S      0:00 [rcuos/5]
+   14 ?        S      0:00 [rcuos/6]
+   15 ?        S      0:00 [rcuos/7]
+   16 ?        S      0:00 [rcuos/8]
+   17 ?        S      0:00 [rcuos/9]
+   18 ?        S      0:00 [rcuos/10]
+   19 ?        S      0:00 [rcuos/11]
+   20 ?        S      0:00 [rcuos/12]
+   21 ?        S      0:00 [rcuos/13]
+   22 ?        S      0:00 [rcuos/14]
+   23 ?        S      0:00 [rcu_bh]
+   24 ?        S      0:00 [rcuob/0]
+   25 ?        S      0:00 [rcuob/1]
+   26 ?        S      0:00 [rcuob/2]
+   27 ?        S      0:00 [rcuob/3]
+   28 ?        S      0:00 [rcuob/4]
+   29 ?        S      0:00 [rcuob/5]
+   30 ?        S      0:00 [rcuob/6]
+   31 ?        S      0:00 [rcuob/7]
+   32 ?        S      0:00 [rcuob/8]
+   33 ?        S      0:00 [rcuob/9]
+   34 ?        S      0:00 [rcuob/10]
+   35 ?        S      0:00 [rcuob/11]
+   36 ?        S      0:00 [rcuob/12]
+   37 ?        S      0:00 [rcuob/13]
+   38 ?        S      0:00 [rcuob/14]
+   39 ?        S      0:00 [migration/0]
+   40 ?        S      0:00 [watchdog/0]
+   41 ?        S<     0:00 [khelper]
+   42 ?        S      0:00 [kdevtmpfs]
+   43 ?        S<     0:00 [netns]
+   44 ?        S      0:00 [xenwatch]
+   45 ?        S      0:00 [xenbus]
+   46 ?        R      0:00 [kworker/0:1]
+   47 ?        S<     0:00 [writeback]
+   48 ?        S<     0:00 [kintegrityd]
+   49 ?        S<     0:00 [bioset]
+   50 ?        S<     0:00 [kworker/u31:0]
+   51 ?        S<     0:00 [kblockd]
+   52 ?        S<     0:00 [ata_sff]
+   53 ?        S      0:00 [khubd]
+   54 ?        S<     0:00 [md]
+   55 ?        S<     0:00 [devfreq_wq]
+   57 ?        S      0:00 [khungtaskd]
+   58 ?        S      0:00 [kswapd0]
+   59 ?        SN     0:00 [ksmd]
+   60 ?        SN     0:00 [khugepaged]
+   61 ?        S      0:00 [fsnotify_mark]
+   62 ?        S      0:00 [ecryptfs-kthrea]
+   63 ?        S<     0:00 [crypto]
+   75 ?        S<     0:00 [kthrotld]
+   76 ?        S      0:00 [kworker/u30:1]
+   77 ?        S      0:00 [khvcd]
+   78 ?        S      0:00 [scsi_eh_0]
+   79 ?        S      0:00 [scsi_eh_1]
+  100 ?        S<     0:00 [deferwq]
+  101 ?        S<     0:00 [charger_manager]
+  142 ?        S<     0:00 [kpsmoused]
+  203 ?        S      0:00 [jbd2/xvda1-8]
+  204 ?        S<     0:00 [ext4-rsv-conver]
+  597 ?        Ss     0:00 dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases eth0
+  665 ?        S      0:00 upstart-socket-bridge --daemon
+  751 ?        Ss     0:00 dbus-daemon --system --fork
+  796 ?        S      0:00 upstart-file-bridge --daemon
+  879 tty4     Ss+    0:00 /sbin/getty -8 38400 tty4
+  882 tty5     Ss+    0:00 /sbin/getty -8 38400 tty5
+  886 tty2     Ss+    0:00 /sbin/getty -8 38400 tty2
+  887 tty3     Ss+    0:00 /sbin/getty -8 38400 tty3
+  891 tty6     Ss+    0:00 /sbin/getty -8 38400 tty6
+  931 ?        Ss     0:00 /usr/sbin/sshd -D
+  934 ?        Ss     0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+  936 ?        Ss     0:00 cron
+  937 ?        Ss     0:00 atd
+ 1056 tty1     Ss+    0:00 /sbin/getty -8 38400 tty1
+ 1057 ttyS0    Ss+    0:00 /sbin/getty -8 38400 ttyS0
+ 1113 ?        S      0:00 [kauditd]
+ 5828 ?        S      0:00 upstart-udev-bridge --daemon
+ 5831 ?        Ss     0:00 /lib/systemd/systemd-udevd --daemon
+ 5951 ?        Ss     0:00 /lib/systemd/systemd-logind
+ 6162 ?        Ssl    0:00 rsyslogd
+ 6919 ?        S<     0:00 [xfsalloc]
+ 6920 ?        S<     0:00 [xfs_mru_cache]
+ 6921 ?        S<     0:00 [xfslogd]
+ 6942 ?        S<     0:00 [bioset]
+12640 ?        Ss     0:00 sshd: ubuntu [priv] 
+12694 ?        S      0:00 sshd: ubuntu@pts/0  
+12695 pts/0    Ss+    0:00 -bash
+14001 ?        Ss     0:00 sshd: connor [priv] 
+14055 ?        S      0:00 sshd: connor@pts/1  
+14056 pts/1    Ss     0:00 -bash
+14112 pts/1    R+     0:00 ps ax
