@@ -1,1 +1,0 @@
-This file should contain the responses to part 1 of the assignment including instance IDs and private IP addresses of each instance.
