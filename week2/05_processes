@@ -6,7 +6,7 @@
     5 ?        S<     0:00 [kworker/0:0H]
     6 ?        S      0:00 [kworker/u30:0]
     7 ?        S      0:00 [rcu_sched]
-    8 ?        R      0:00 [rcuos/0]
+    8 ?        S      0:00 [rcuos/0]
     9 ?        S      0:00 [rcuos/1]
    10 ?        S      0:00 [rcuos/2]
    11 ?        S      0:00 [rcuos/3]
@@ -44,7 +44,7 @@
    43 ?        S<     0:00 [netns]
    44 ?        S      0:00 [xenwatch]
    45 ?        S      0:00 [xenbus]
-   46 ?        R      0:00 [kworker/0:1]
+   46 ?        S      0:01 [kworker/0:1]
    47 ?        S<     0:00 [writeback]
    48 ?        S<     0:00 [kintegrityd]
    49 ?        S<     0:00 [bioset]
@@ -95,10 +95,10 @@
  6920 ?        S<     0:00 [xfs_mru_cache]
  6921 ?        S<     0:00 [xfslogd]
  6942 ?        S<     0:00 [bioset]
-12640 ?        Ss     0:00 sshd: ubuntu [priv] 
-12694 ?        S      0:00 sshd: ubuntu@pts/0  
-12695 pts/0    Ss+    0:00 -bash
-14001 ?        Ss     0:00 sshd: connor [priv] 
-14055 ?        S      0:00 sshd: connor@pts/1  
-14056 pts/1    Ss     0:00 -bash
-14112 pts/1    R+     0:00 ps ax
+14733 ?        Ss     0:00 sshd: ubuntu [priv] 
+14809 ?        S      0:00 sshd: ubuntu@pts/0  
+14810 pts/0    Ss     0:00 -bash
+14828 pts/0    S      0:00 sudo su - connor
+14829 pts/0    S      0:00 su - connor
+14830 pts/0    S      0:00 -su
+14923 pts/0    R+     0:00 ps ax
