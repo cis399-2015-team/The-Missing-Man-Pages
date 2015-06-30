@@ -1,3 +1,5 @@
+Here is the output of /usr/bin/free
+
              total       used       free     shared    buffers     cached
 Mem:       1016292     873404     142888        368      80040     657560
 -/+ buffers/cache:     135804     880488
