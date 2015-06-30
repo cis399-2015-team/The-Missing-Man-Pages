@@ -1,8 +1,10 @@
+Here is the output of /bin/df
+
 Filesystem     1K-blocks    Used Available Use% Mounted on
-/dev/xvda1       8124856 1544996   6144100  21% /
-dev               502224       0    502224   0% /dev
-run               509064     220    508844   1% /run
-tmpfs             509064       0    509064   0% /dev/shm
-tmpfs             509064       0    509064   0% /sys/fs/cgroup
-tmpfs             509064       0    509064   0% /tmp
-tmpfs             101816       0    101816   0% /run/user/0
+/dev/xvda1       8115168 1110700   6569192  15% /
+none                   4       0         4   0% /sys/fs/cgroup
+udev              503188      12    503176   1% /dev
+tmpfs             101632     348    101284   1% /run
+none                5120       0      5120   0% /run/lock
+none              508144       0    508144   0% /run/shm
+none              102400       0    102400   0% /run/user
