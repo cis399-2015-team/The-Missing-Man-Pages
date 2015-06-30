@@ -1,0 +1,7 @@
+Here is a list of the EC2 instance IDs and private IPs of all of our instances.
+
+
+<instance id>	<private IP>	<Name>
+i-2824fde0	10.0.4.226	MissingManPages - Connor
+i-764a93be	10.0.4.230	MissingManPages - Reed
+i-f3548d3b	10.0.4.27	MissingManPages - 00J0
