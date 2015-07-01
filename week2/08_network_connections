@@ -1,25 +1,10 @@
-These newline-separated sections are the output from 4 separate netstat calls.
+This is the output of the "netstat -atup" command:
 
-netstat -n -A inet
-Active Internet connections (w/o servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State      
-tcp        0     28 ip-10-0-4-226.us-we:ssh c-71-236-140-24.h:56220 ESTABLISHED
-
-netstat --listen -A inet
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State      
-tcp        0      0 *:ssh                   *:*                     LISTEN     
-udp        0      0 *:50134                 *:*                                
-udp        0      0 *:bootpc                *:*                                
-
-netstat -ntlp
-Active Internet connections (only servers)
+Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      931/sshd        
-tcp6       0      0 :::22                   :::*                    LISTEN      931/sshd        
-
-netstat -nr
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-0.0.0.0         10.0.4.1        0.0.0.0         UG        0 0          0 eth0
-10.0.4.0        0.0.0.0         255.255.255.0   U         0 0          0 eth0
+tcp        0      0 *:ssh                   *:*                     LISTEN      926/sshd        
+tcp        0     28 ip-10-0-4-226.us-we:ssh c-71-236-140-24.h:55765 ESTABLISHED 2000/sshd: connor [
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      926/sshd        
+udp        0      0 *:bootpc                *:*                                 607/dhclient    
+udp        0      0 *:23843                 *:*                                 607/dhclient    
+udp6       0      0 [::]:60602              [::]:*                              607/dhclient    
