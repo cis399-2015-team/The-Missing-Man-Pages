@@ -48,7 +48,7 @@ Ign http://us.archive.ubuntu.com trusty/universe Translation-en_US
 
 -------------------------------------------------------------------------
 
-This is the output from "sudo apt-get upgrade":
+This is the output from "sudo apt-get upgrade"
 
 Reading package lists...
 Reading package lists...
