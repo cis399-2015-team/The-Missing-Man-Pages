@@ -5,3 +5,9 @@
 *	Joey Nelson
 *	Reed Reese-Steiner
 *	Connor Workman
+
+
+# Last Known Running Servers
+* MissingManPages - Connor @ 52.27.147.194
+* MissingManPages - Reed @ 52.26.200.100
+* MissingManPages - 00J0 @ 52.10.243.147
