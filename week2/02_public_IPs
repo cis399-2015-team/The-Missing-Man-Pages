@@ -2,6 +2,13 @@ Public IP and DNS can be found in the EC2 console.
 Click on an instance to display details.
 The Public DNS and Public IP fields are in the top right corner of the details pane.
 
+Alternative lookup:
+1. From the EC2 console expand the disclosure button the left panel labeled 'INSTANCES'
+2. Click 'Instances'
+3. A table should now visible and occupy most of window
+4. Locate the column header 'Name' and find the record for the instance of interest
+5. Now within that record find the entry the column labeled'Public DNS'
+
 Example Public DNS:
 ec2-52-27-147-194.us-west-2.compute.amazonaws.com
 
