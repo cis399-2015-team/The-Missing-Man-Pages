@@ -1,0 +1,9 @@
+[0;32mInfo: Retrieving plugin[0m
+[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/root_home.rb[0m
+[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/puppet_vardir.rb[0m
+[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/concat_basedir.rb[0m
+[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/pe_version.rb[0m
+[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/facter_dot_d.rb[0m
+[0;32mInfo: Caching catalog for ip-10-0-4-226.us-west-2.compute.internal[0m
+[0;32mInfo: Applying configuration version '1436494327'[0m
+[mNotice: Finished catalog run in 0.23 seconds[0m
