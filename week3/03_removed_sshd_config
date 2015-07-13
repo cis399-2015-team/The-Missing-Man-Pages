@@ -1,18 +1,3 @@
-Connor:
-
-[0;32mInfo: Retrieving plugin[0m
-[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/root_home.rb[0m
-[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/puppet_vardir.rb[0m
-[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/concat_basedir.rb[0m
-[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/pe_version.rb[0m
-[0;32mInfo: Loading facts in /var/lib/puppet/lib/facter/facter_dot_d.rb[0m
-[0;32mInfo: Caching catalog for ip-10-0-4-226.us-west-2.compute.internal[0m
-[0;32mInfo: Applying configuration version '1436494327'[0m
-[mNotice: /Stage[main]/Sshd/File[/etc/ssh/sshd_config]/ensure: defined content as '{md5}db3706831d16ac32d8665fbfb47dbd99'[0m
-[mNotice: Finished catalog run in 0.26 seconds[0m
-
-Reed:
-
 reedrs@ip-10-0-4-226 /etc/ssh % sudo mv -v sshd_config{,.bak}
 ‘sshd_config’ -> ‘sshd_config.bak’
 reedrs@ip-10-0-4-226 /etc/ssh % sudo puppet agent -t
