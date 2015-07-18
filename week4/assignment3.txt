@@ -1,0 +1,12 @@
+Here's an example entry for sendmail's mail.log.
+It shows the activity that occurred when we received an email from you.
+
+Jul 18 07:10:38 ip-10-0-4-226 sm-mta[9272]: t6I7Ab7F009272: from=<stevev@hexadecimal.uoregon.edu>, size=3639, class=0, nrcpts=1, msgid=<21929.64492.434158.54472@hexadecimal.uoregon.edu>, proto=ESMTP, daemon=MTA-v4, relay=hexadecimal.uoregon.edu [128.223.142.97]
+
+
+Here are some example apache2 webserver access requests.
+The first request grabs index.html, the second request grabs the image file displayed on the page, and the third request shows that my browser attempts to find a file called "favicon.ico" but fails to do so (since the public html directory contains no such file).
+
+71.236.***.** - - [15/Jul/2015:05:09:26 +0000] "GET / HTTP/1.1" 200 1227 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0"
+71.236.***.** - - [15/Jul/2015:05:09:26 +0000] "GET /spaceIntrudersCapture.gif HTTP/1.1" 200 6315989 "http://52.27.147.194/" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0"
+71.236.***.** - - [15/Jul/2015:05:09:28 +0000] "GET /favicon.ico HTTP/1.1" 404 502 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0"
