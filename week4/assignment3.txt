@@ -1,3 +1,7 @@
+Please visit one of our webservers by accessing the following URL in a web browser:
+http://52.27.147.194/
+
+
 Here's an example entry for sendmail's mail.log.
 It shows the activity that occurred when we received an email from you.
 
