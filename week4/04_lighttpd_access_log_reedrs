@@ -1,4 +1,4 @@
-Here is a sample from /var/log/lighttpd/access.log, showing me accessing my server with a couple of different devices, one of them a phone (note the wierd user agent string).
+Here is a sample from /var/log/lighttpd/access.log, showing me accessing my server (http://ec2-52-26-200-100.us-west-2.compute.amazonaws.com) with a couple of different devices, one of them a phone (note the wierd user agent string).
 
 172.56.1.40 52.26.200.100 - [19/Jul/2015:17:53:19 -0700] "GET / HTTP/1.1" 200 450 "-" "SAMSUNG-SGH-T139/T139UVJC1 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1"
 172.56.1.40 52.26.200.100 - [19/Jul/2015:17:53:21 -0700] "GET /cat.png HTTP/1.1" 200 140977 "http://52.26.200.100/" "SAMSUNG-SGH-T139/T139UVJC1 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1"
