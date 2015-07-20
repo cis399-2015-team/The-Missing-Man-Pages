@@ -1,0 +1,9 @@
+Here's what I found in /var/log/mail.log after I sent an email from my instance to my uoregon.edu email and then replied back to my instance:
+
+Jul 19 22:46:44 ip-10-0-4-230 sendmail[1715]: t6JMkiGD001715: from=reedrs, size=130, class=0, nrcpts=1, msgid=<201507192246.t6JMkiGD001715@ip-10-0-4-230.us-west-2.compute.internal>, relay=reedrs@localhost
+Jul 19 22:46:45 ip-10-0-4-230 sm-mta[1716]: t6JMkiCU001716: from=<reedrs@ip-10-0-4-230.us-west-2.compute.internal>, size=406, class=0, nrcpts=1, msgid=<201507192246.t6JMkiGD001715@ip-10-0-4-230.us-west-2.compute.internal>, proto=ESMTP, daemon=MTA-v4, relay=localhost [127.0.0.1]
+Jul 19 22:46:45 ip-10-0-4-230 sm-mta[1716]: STARTTLS=client, relay=smtp.uoregon.edu., version=TLSv1/SSLv3, verify=FAIL, cipher=DHE-RSA-AES256-GCM-SHA384, bits=256/256
+Jul 19 22:46:45 ip-10-0-4-230 sm-mta[1716]: t6JMkiCU001716: to=<reedr@uoregon.edu>, ctladdr=<reedrs@ip-10-0-4-230.us-west-2.compute.internal> (1001/1001), delay=00:00:01, xdelay=00:00:00, mailer=esmtp, pri=30406, relay=smtp.uoregon.edu. [184.171.108.237], dsn=2.0.0, stat=Sent (t6JMkKnT005507 Message accepted for delivery)
+Jul 19 22:46:45 ip-10-0-4-230 sendmail[1715]: t6JMkiGD001715: to=reedr@uoregon.edu, ctladdr=reedrs (1001/1001), delay=00:00:01, xdelay=00:00:01, mailer=relay, pri=30130, relay=[127.0.0.1] [127.0.0.1], dsn=2.0.0, stat=Sent (t6JMkiCU001716 Message accepted for delivery)
+Jul 19 22:47:34 ip-10-0-4-230 sm-mta[1718]: t6JMlXvd001718: from=<reedr@uoregon.edu>, size=2618, class=0, nrcpts=1, msgid=<55AC28E6.1040408@uoregon.edu>, proto=ESMTP, daemon=MTA-v4, relay=cc-smtp3.uoregon.edu [184.171.108.231]
+Jul 19 22:47:34 ip-10-0-4-230 sm-mta[1719]: t6JMlXvd001718: to=<reedrs@ec2-52-26-200-100.us-west-2.compute.amazonaws.com>, delay=00:00:00, xdelay=00:00:00, mailer=local, pri=32899, dsn=2.0.0, stat=Sent
