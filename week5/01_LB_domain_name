@@ -1,0 +1,5 @@
+http://missingmanpages-1289965409.us-west-2.elb.amazonaws.com
+
+This is the domain name associated with the AWS Elastic Load Balancer for The Missing Man Pages.
+The index.php file will be served by either of the two puppet instances, and displays a misleading message about which instance is serving pages.
+This is due to problems with the PHP code in index.php. This could be solved by grabbing header information from the web server and determining hostname based on forwarded IP.

@@ -1,7 +1,13 @@
+To: stevev@cs.uoregon.edu reedr@uoregon.edu jnelson2@uoregon.edu cworkman@cs.uoregon.edu
+Subject: CIS399 - Here's the rest of our submission for assignment 3
+From: ubuntu@ec2-52-27-147-194.us-west-2.compute.amazonaws.com
+
 Please visit one of our webservers by accessing the following URL in a web browser:
 http://52.27.147.194/ OR http://ec2-52-27-147-194.us-west-2.compute.amazonaws.com/ for Connor's webserver
 http://52.26.200.100/ OR http://ec2-52-26-200-100.us-west-2.compute.amazonaws.com/ for Reed's webserver
 http://52.10.243.147/ for Joey's webserver
+
+All sample log entries can be found in our team's public git repository (non-puppet).
 
 Here's an example entry for sendmail's mail.log.
 It shows the activity that occurred when we received an email from you.
@@ -11,6 +17,7 @@ Jul 18 07:10:38 ip-10-0-4-226 sm-mta[9272]: t6I7Ab7F009272: from=<stevev@hexadec
 
 Here are some example apache2 webserver access requests.
 The first request grabs index.html, the second request grabs the image file displayed on the page, and the third request shows that my browser attempts to find a file called "favicon.ico" but fails to do so (since the public html directory contains no such file).
+User account web sites are configured on multiple instances.
 
 71.236.***.** - - [15/Jul/2015:05:09:26 +0000] "GET / HTTP/1.1" 200 1227 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0"
 71.236.***.** - - [15/Jul/2015:05:09:26 +0000] "GET /spaceIntrudersCapture.gif HTTP/1.1" 200 6315989 "http://52.27.147.194/" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0"

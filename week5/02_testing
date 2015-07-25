@@ -1,0 +1,9 @@
+Shutting down one of the back-end httpd servers results in only one page serving requests through the load balancer.
+This is made obvious when visting the domain of the load balancer by the PHP code in the index.php page.
+
+Shutting down BOTH back-end servers immediately results in unserved requests.
+Visiting the domain of the ELB after the unhealthy threshold is surpassed results in a blank page.
+
+When an instance restarts the http daemon service it takes a few minutes for the load balancer to recognize the server as healthy and begin routing requests to it.
+When the server is recognized and back in service, http requests are once again served by that instance through the load balancer.
+When both servers come back on, http requests are split between instances as normal.
