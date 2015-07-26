@@ -1,6 +1,44 @@
-An example page request made by an ARM processor running Linux: 
+    An example page request made by an ARM processor running Linux (304 status code means some site content was already cached):
+
 10.0.4.84 missingmanpages-1289965409.us-west-2.elb.amazonaws.com - [21/Jul/2015:22:32:03 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (X11; Linux armv7l; rv:38.0) Gecko/20100101 Firefox/38.0"
 
-An example of a successful healthcheck directed at 10.0.4.226 (Connor's instance):
+
+
+
+    An example of a successful healthcheck directed at 10.0.4.226 (Connor's instance):
+
 10.0.4.8 10.0.4.226 - [21/Jul/2015:22:32:24 +0000] "GET /index.html HTTP/1.1" 200 567 "-" "ELB-HealthChecker/1.0"
 
+
+
+    Examples of some malicious attack attempts on the web server that resulted in 404 status code responses:
+
+188.209.49.192 192.168.1.1 - [26/Jul/2015:15:49:25 +0000] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 345 "-" "Mozilla/5.0 (Windows NT 5.1)"
+10.0.4.233 52.25.19.10 - [26/Jul/2015:16:14:28 +0000] "GET /muieblackcat HTTP/1.1" 404 345 "-" "-"
+10.0.4.233 52.25.19.10 - [26/Jul/2015:16:14:29 +0000] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+10.0.4.233 52.25.19.10 - [26/Jul/2015:16:14:29 +0000] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+108.229.67.92 52.27.147.194 - [26/Jul/2015:16:14:56 +0000] "GET /muieblackcat HTTP/1.1" 404 345 "-" "-"
+108.229.67.92 52.27.147.194 - [26/Jul/2015:16:14:57 +0000] "GET //phpMyAdmin/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+108.229.67.92 52.27.147.194 - [26/Jul/2015:16:14:57 +0000] "GET //phpmyadmin/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+108.229.67.92 52.27.147.194 - [26/Jul/2015:16:14:57 +0000] "GET //pma/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+108.229.67.92 52.27.147.194 - [26/Jul/2015:16:14:57 +0000] "GET //myadmin/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+108.229.67.92 52.27.147.194 - [26/Jul/2015:16:14:57 +0000] "GET //MyAdmin/scripts/setup.php HTTP/1.1" 404 345 "-" "-"
+
+
+
+    An example of a FAILED page requests:
+
+10.0.4.233 missingmanpages-1289965409.us-west-2.elb.amazonaws.com - [26/Jul/2015:23:39:03 +0000] "GET / HTTP/1.1" 500 556 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0"
+
+
+
+    An example of a series of FAILED health checks directed at Connor's instance:
+
+10.0.4.233 10.0.4.226 - [26/Jul/2015:23:39:07 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.29 10.0.4.226 - [26/Jul/2015:23:39:08 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.233 10.0.4.226 - [26/Jul/2015:23:41:07 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.29 10.0.4.226 - [26/Jul/2015:23:41:08 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.233 10.0.4.226 - [26/Jul/2015:23:41:37 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.29 10.0.4.226 - [26/Jul/2015:23:41:38 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.29 10.0.4.226 - [27/Jul/2015:00:13:00 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
+10.0.4.233 10.0.4.226 - [27/Jul/2015:00:13:00 +0000] "GET /index.php HTTP/1.1" 500 556 "-" "ELB-HealthChecker/1.0"
