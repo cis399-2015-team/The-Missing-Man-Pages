@@ -1,89 +1,15 @@
-class lighttpd {
-	package {
-		"lighttpd": ensure => installed;
-        "php5-cgi": ensure => installed;
-	}
+The following file declaration is used to manage the "/var/www" directory on web server instances.
+Content is replicated from the "modules/lighttpd/files/site_content" directory in the puppet repository.
 
-	file { "/etc/lighttpd/lighttpd.conf":
-		notify	=> Service["lighttpd"],
-		mode	=> 644,
-		owner	=> "root",
-		group	=> "root",
-		source	=> "puppet:///modules/lighttpd/lighttpd.conf",
-		require => Package["lighttpd"],
-	}
+This excerpt is from "the-missing-man-pages-puppet/modules/lighttpd/manifests/init.pp":
 
-	file { "/var/www/index.html":
-		mode	=> 644,
-		owner	=> "root",
-		group	=> "root",
-		source	=> "puppet:///modules/lighttpd/index.html",
-		require => Package["lighttpd"],
-	}
-
-	file { "/var/www/otherfile.html":
-		mode	=> 644,
-		owner	=> "root",
-		group	=> "root",
-		source	=> "puppet:///modules/lighttpd/otherfile.html",
-		require => Package["lighttpd"],
-	}
-
-	file { "/var/www/mmp.gif":
-		mode	=> 644,
-		owner	=> "root",
-		group	=> "root",
-		source	=> "puppet:///modules/lighttpd/mmp.gif",
-		require => Package["lighttpd"],
-	}
-
-	file { "/var/www/index.php":
-		mode	=> 644,
-		owner	=> "root",
-		group	=> "root",
-		source	=> "puppet:///modules/lighttpd/index.php",
-		require => Package["lighttpd"],
-	}
-
-	file { "/etc/lighttpd/conf-enabled/10-userdir.conf":
-		notify	=> Service["lighttpd"],
-		ensure	=> link,
-		target	=> "/etc/lighttpd/conf-available/10-userdir.conf",
-		require => Package["lighttpd"],
-	}
-
-	file { "/etc/lighttpd/conf-enabled/10-accesslog.conf":
-		notify	=> Service["lighttpd"],
-		ensure	=> link,
-		target	=> "/etc/lighttpd/conf-available/10-accesslog.conf",
-		require => Package["lighttpd"],
-	}
-
-    file { "/etc/lighttpd/conf-enabled/10-fastcgi.conf":
-		notify	=> Service["lighttpd"],
-		ensure	=> link,
-		target	=> "/etc/lighttpd/conf-available/10-fastcgi.conf",
-		require => Package["lighttpd"],
-	}
-
-    file { "/etc/lighttpd/conf-enabled/15-fastcgi-php.conf":
-		notify	=> Service["lighttpd"],
-		ensure	=> link,
-		target	=> "/etc/lighttpd/conf-available/15-fastcgi-php.conf",
-		require => Package["lighttpd"],
-	}
-
-
-	service { "lighttpd":
-		enable	=> true,
-		ensure	=> running,
-		require	=>	[ Package["lighttpd"],
-				  File["/etc/lighttpd/lighttpd.conf"],
-				],
-	}
-
-	service { "apache2":
-		enable => false,
-		ensure => stopped
-		}
-}
+    file { "/var/www/":
+        ensure => directory,
+        recurse => true,
+        purge   => true,
+        force   => true,
+        owner   => "root",
+        group   => "root",
+        mode    => 0644,
+        source  => "puppet:///modules/lighttpd/site_content/",
+    }
