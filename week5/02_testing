@@ -1,9 +1,8 @@
-Shutting down one of the back-end httpd servers results in only one page serving requests through the load balancer.
-This is made obvious when visting the domain of the load balancer by the PHP code in the index.php page.
+When one of the back-end servers is disabled, the load balancer sends all connections to the other one. When visting the domain of the load balancer, this is made obvious by the PHP code in the index.php page.
 
 Shutting down BOTH back-end servers immediately results in unserved requests.
-Once 2 healthchecks fail on an instance (the unhealthy threshold) the servers are deemed "OutOfService" by the AWS console.
-Visiting the domain of the ELB after the unhealthy threshold is surpassed results in a blank page.
+Once 2 (the unhealthy threshold) healthchecks fail on an instance, it is deemed "OutOfService" by the AWS console.
+Visiting the domain of the ELB after the unhealthy threshold has been surpassed on both instances results in a blank page.
 
 When an instance restarts the http daemon service it takes a few minutes for the load balancer to recognize the server as healthy and begin routing requests to it.
 This is because the ELB needs to hit the healthy threshold (10 successful health checks) before it begins routing traffic to the server again.
@@ -12,5 +11,5 @@ When both servers come back on, http requests are split between instances as nor
 This is evident from the access logs for the lighttpd servers.
 
 Conclusions:
-Since we have a lightweight page with fairly shallow healthchecks (only checks for index) it may be appropriate to
-make health checks more frequent, or to lower the healthy threshold so that servers come back online more quickly.
+Since we have a lightweight page with fairly shallow healthchecks (only checks for index), it may be appropriate to
+make health checks more frequent or to lower the healthy threshold so that servers come back online more quickly.
