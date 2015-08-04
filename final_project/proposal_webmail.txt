@@ -1,0 +1,18 @@
+Some ideas for the proposal if we happen to choose the webmail-server option:
+
+1.    concrete goals for your project, and methods of testing and verification you will apply to determine whether those goals were met
+2.    a discussion of your project's effect on its user population, and the user support issues it might raise
+3.    a discussion of security issues relevant to your project
+4.    a discussion of the work needed to complete the project and what might be needed to maintain it for continued future use
+5.    documentation of the project, both for the system administration work involved and for your user community 
+
+
+First of all, the two web-based IMAP client's that I'm currently aware of are:
+ 1. Roundcube
+ 2. Squirrelmail
+Any other thoughs about that choice?
+
+1. Our project is to install, configure, and run a web-based IMAP client on one of our mail servers so that remote authenticated Internet users (in this case, just us three) can send and receive email from a web browser. 
+2. Since email is a heavily-used service, hypothetically a lot of people would use this service. As such, we would ideally like to provide it in a rather high-uptime manner. Similarly, as far as security considerations allow, we would probably like to provide an automated way of reseting login information such as passwords and usernames.
+3. Supposing we won't force our users to carry private keys around with them, this will be a username/password-authenticated service, so we immediately fall into the trap of insecure passwords. To start simply, we could set a somewhat high minimum password length (8 chars?) and disallow more than some number (10?) of consecutively failed login attempts. We should also look into any application-specific security problems that may come with whatever software we end up using.
+4. Based on my current understanding, we're currently not too far away from an at least minimally functioning wib IMAP client. We already have sendmail, which takes care of the IMAP server requirement, set up on all of our instances, so, in theory, all we need to do is set up the web interface. I suppose we will probably implement this with puppet from the start
