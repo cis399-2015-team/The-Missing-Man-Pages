@@ -21,3 +21,24 @@ A draft of the proposal:
 5.
  a) We could write up a "help" page for users to access from the login page detailing at least how to log in and perhaps how to set up an account (if implemented) and other such stuff. Hypothetically, we could also provide contact information for ourselves or perhaps the customer service department in case the help page wasn't enough.
  b) For the sysadmins, we'll have our puppet code, which should serve as a pretty good baseline for showing how the server gets set up. I imagine we will also want to write a broad overview in English of the project, being sure to detail anything counterintuitive, hacky, or unobvious. In particular, we should make it clear how to preserve user-specific data (i.e. emails saved on the server) and migrate it to a new server in a manner transparent to the user.
+
+
+Final-ish Draft
+
+MissingManPages Webmail System Proposal
+
+Goals - 
+Setting up a webmail system seems to be a common task for system administrators.  We wish to explore this task by running a web-based IMAP client on one of our existing sendmail servers, so that remote authenticated Internet users can access our mail services through a web browser. We will draft a set of simple use cases to guide development and testing. These use cases should cover all important functional requirements like user authentication, and access to standard mail services, possibly being extended to include user registration and account management. Black-box testing for consistency with use cases should also help us verify the usability of the system. If we implement any of the additional features mentioned below (brute-force password attack or spam protection) we will perform glass box testing and stage malicious attacks against our system to ensure that these features behave as expected.
+
+User Concerns -
+The users of a webmail system typically have several important quality concerns that are not necessarily functional requirements.  One of the first to come to mind is security, but we will discuss this in the next section.  Obviously, availability is of concern for webmail users, meaning that we must ensure that the webmail system we develop has no single point of failure and does not experience unexpected downtime. Since webmail system users will not be system administrators in the real world, we must also create mechanisms for users to change or review their access credentials and contact sysadmin/webmaster/support personnel.
+
+Security Concerns -
+Supposing we won't force our users to carry private keys around with them, this will be a username/password-authenticated service; now we've fallen into the trap of insecure passwords. To start simply, we could set a somewhat high minimum password length (8 chars?) and disallow more than some number (10?) of consecutively failed login attempts from a particular IP. We should also look into any application-specific security problems that may come with whatever software we end up using.  For example, if we use the RoundCube system we must restrict access through the webserver to several RoundCube directories (/config, /temp, /logs). Access to back-end databases should be restricted to authenticated users. Some sort of spam-blocker would also be greatly appreciated by our users. For the password rate-limiter feature, we should be notified if a particular IP keeps banging on the server.  Lastly, we could connect sendmail with ClamAV through clamav-milter to create a virus scanning server through which we could filter emails as additonal layer of protection.
+
+Proposed Solution -
+We will use puppet to install an existing webmail framework (probably RoundCube) on one of our web servers.  This requires that we also set up a simple database back-end (MySQL, sqlite, etc.).  We will then need to configure RoundCube and the database system, and apply necessary security restrictions such as file access permissions through the webserver and password requirements.
+
+Documentation -
+User documentation for RoundCube can simply be linked to.  For the components of the system which we design ourselves (user authentication procedures and the like) we will write documents based on tested use cases that explain usage in sufficient detail. This should include, minimally, instructions for setting up an account, authenticating, contacting support, and any other core features.
+For the sysadmins, we'll have our puppet code, which should serve as a pretty good baseline for showing how the server gets set up. I imagine we will also want to write a broad overview in English of the project, being sure to detail anything counterintuitive, hacky, or unobvious. In particular, we should make it clear how to preserve user-specific data (i.e. emails saved on the server) and migrate it to a new server in a manner transparent to the user.
