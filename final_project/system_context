@@ -8,6 +8,7 @@ These include:
   Sendmail (Mail Services)
   PAM (User Authentication)
   PHP (Specifically php5-cgi and php5-fpm)
+  Memcached (Memcached and php5-memcache, for session storage, attachment storage and performance increase)
   
 The instance that holds the master database records has a different system context.
 The master database server has the following system requirements:
@@ -17,3 +18,6 @@ The master database server has the following system requirements:
          This server must hold the database records for webmail services.  Roundcube provides a database initialization
          file specifically for MySQL.  This file must be loaded into the roundcubemail database and grants must be
          given to the front-end server's private IP.
+
+
+
