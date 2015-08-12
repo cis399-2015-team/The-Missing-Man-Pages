@@ -1,0 +1,19 @@
+The Missing Man Pages team has deployed webmail services on three AWS EC2 instances loaded with the standard Ubuntu AMI.
+
+Webmail services depend on several software systems.
+These include:
+  Roundcube Webmail (Front end interface)
+  MySQL (Database Service)
+  Dovecot (IMAP Service)
+  Sendmail (Mail Services)
+  PAM (User Authentication)
+  PHP (Specifically php5-cgi and php5-fpm)
+  
+The instance that holds the master database records has a different system context.
+The master database server has the following system requirements:
+  MySQL: This is the most important piece of software on the master database server (except perhaps puppet)
+         The master server must have a running MySQL service, which must be allowed to communicate with the
+         other two servers via the default MySQL port.
+         This server must hold the database records for webmail services.  Roundcube provides a database initialization
+         file specifically for MySQL.  This file must be loaded into the roundcubemail database and grants must be
+         given to the front-end server's private IP.
