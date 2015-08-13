@@ -3,7 +3,7 @@ The Missing Man Pages team has deployed webmail services on three AWS EC2 instan
 Webmail services depend on several software systems but these dependencies are split across servers.
 These include:
   Roundcube Webmail (Front end interface)
-  Lighttpd (Webserver providing access to front end)
+  Apache (Webserver providing access to front end)
   MySQL (Database Service)
   Dovecot (IMAP/IMAPS Connections Services)
   Sendmail (Mail Services)
@@ -30,7 +30,7 @@ The instance providing Mail and IMAP services has the following requirements:
   
 The front end server has the following requirements:
   Roundcube Webmail (Front end interface)
-  Lighttpd (Http/https services)
+  Apache (Http/https services)
   Memcached
   PHP
   
