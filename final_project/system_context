@@ -3,12 +3,13 @@ The Missing Man Pages team has deployed webmail services on three AWS EC2 instan
 Webmail services depend on several software systems but these dependencies are split across servers.
 These include:
   Roundcube Webmail (Front end interface)
+  Lighttpd (Webserver providing access to front end)
   MySQL (Database Service)
-  Dovecot (IMAP Service)
+  Dovecot (IMAP/IMAPS Connections Services)
   Sendmail (Mail Services)
   PAM (User Authentication)
   PHP (Specifically php5-cgi and php5-fpm)
-  Memcached (Memcached and php5-memcache, for session storage, attachment storage and performance increase)
+  Memcached (Memcached and php5-memcache, for session storage, attachment storage and possible performance increase)
   
 The instance that holds the master database records has the following system context...
   MySQL: This is the most important piece of software on the master database server (except perhaps puppet)
@@ -32,3 +33,14 @@ The front end server has the following requirements:
   Lighttpd (Http/https services)
   Memcached
   PHP
+  
+In order to ensure that the systems meet these requirements, we have deployed several puppet modules.
+  masterdb module: This module is included only in the puppet master's node definition. The master
+    is responsible for holding the only copy of the MySQL database accessed by the other two servers.
+  
+  memcachemod:  This module is deployed on each server, and memcached data is redundantly placed on each.
+    This module ensures that all packages and services required for memcaching are installed/running.
+  
+  phpmod:   This module is deployed on each server.
+  
+  
