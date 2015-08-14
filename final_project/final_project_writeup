@@ -10,12 +10,11 @@ concrete goals for your project, and methods of testing and verification you wil
 
 
 2) Security Issues:
+    An explanation of the firewall rules in place (and required by the webmail system) is described in full in the "puppet_documentation" file referenced later in this document.  In brief, connections to/from servers in the private subnet are allowed via IMAP, SMTP and memcached (port 11211). Connections to the front end web server are allowed from any IP via HTTPS.  Visiting the insecure http version of our webpage results in a forced redirection to the secure page (https).  A 'phony' certificate is currently in place and requires users to add an exception within their web browser in order to access webmail services.
 
-
-
-a discussion of the work needed to complete the project and what might be needed to maintain t for continued future use, and ways that installation and maintenance tasks can be automated:
 
 3) Concerns for Future Development/Maintenance:
+(a discussion of the work needed to complete the project and what might be needed to maintain t for continued future use, and ways that installation and maintenance tasks can be automated:)
     *much of the configuration is automated, with the caveat that the system must be reconfigured when redeployed due to IP and DNS differences
 
 
