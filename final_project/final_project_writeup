@@ -1,27 +1,46 @@
-1, A)   User Satisfaction and Support:
-(concrete goals for your project, and methods of testing and verification you will apply to determine whether those goals were met:)
+1)
     This system administration project intends to provide easy to access to an interface for sending and receiving emails. Because our email system is web browser based will be accessible from most internet connected devices. Without such a feature users would have to send mail from the unix command line interface, or else use a different mail service. Because we have configured this email service ourselves we will have greater control over its use, which should allow us to give timely and detailed reports to clients and/or managers, control things like file upload limits and mediate storage demands and requests.
-    Issues that may come up as we support this project are few, but critical nonetheless, because email is the primary means of business communications for many individuals. The first major support issue will involve maintaining user access at all times appropriate times to their email. This means we will need to ensure the system has very high stability. Other issues that may arise would be a user forgetting or losing their password and needing a new one issued, a similar event could be that a user’s email has been compromised and password changed, in which case we will need to lockdown that account until it’s access is restored to the appropriate owner of the account. In addition to maintaining high stability and accessibility of the system we will want to keep performance high. This will involve routine monitoring of the system to find problem areas, such as the server being overwhelmed by users that it needs additional resources to spin up emails in a timely manner, for this some sort of dynamic resource allocation would be handy or a load balancer setup. Routine auditing of storage usage will help identify users who have not archived or deleted email regularly enough. In these cases we will simply suggest that they heaviest user archive or delete their older emails to free up more storage space for the rest of the user base. 
+    
+
+
+
+2, A)   User Satisfaction and Support:
+(concrete goals for your project, and methods of testing and verification you will apply to determine whether those goals were met:)
+    Issues that may come up as we support this project are few, but critical nonetheless, because email is the primary means of business communications for many individuals. The first major support issue will involve maintaining user access at all times appropriate times to their email. This means we will need to ensure the system has very high stability. Other issues that may arise would be a user forgetting or losing their password and needing a new one issued, a similar event could be that a user’s email has been compromised and password changed, in which case we will need to lockdown that account until it’s access is restored and restricted to the appropriate owner of the account. In addition to maintaining high stability and accessibility of the system we will want to keep performance high. This will involve routine monitoring of the system to find problem areas, such as the server being overwhelmed by users such that it needs additional resources to spin up emails in a timely manner, for this some sort of dynamic resource allocation would be handy or a load balancer setup for mail services. Routine auditing of storage usage will help identify users who have not archived or deleted email regularly enough. In these cases we will simply suggest that they heaviest user archive or demand that they delete their older emails to free up more storage space for the rest of the user base. 
     User related concerns:
-        Users must be monitored for malicious activity (spamming, spreading viruses, etc.)
-        Even if users are trusted, there remains the possibility that their accounts could be exposed to infiltration by a third party.  This means that mail and login activity must be monitored for possible malicious activity.  Roundcube errors such as failed IMAP login attempts are logged in /var/www/roundcubemail-1.1.2/logs/errors (an access protected file). Dovecot and SMTP log messages can be tracked through /var/log/mail.log.
+    *Users must be monitored for malicious activity (spamming, spreading viruses, etc.)
+    *Even if users are trusted, there remains the possibility that their accounts could be exposed to infiltration by a third party.  This means that mail and login activity must be monitored for possible malicious activity.  Roundcube errors such as failed IMAP login attempts are logged in /var/www/roundcubemail-1.1.2/logs/errors (an access protected file). Dovecot and SMTP log messages can be tracked through /var/log/mail.log.
+     *...
+   
 
-
-1, B) Testing and Verification:
+2, B)   Testing and Verification:
     Initial project testing during configuration involved checking a few log files and tailing error messages by reconfiguring properly.  As the project has grown more complex it has become necessary to implement puppet modules in order to control the configuration of system components more quickly/easily.  With our current puppet modules, we are able to completely switch responsibilities between the two puppet agent instances with only a few extra configuration changes needed.
     After the initial build/configuration, blackbox testing on webmail features was allowed to begin. This required confirming essential mail features remained functional after any substantial configuration changes. 
 
-2) Security Issues:
+
+
+
+
+3) Security Issues:
     An explanation of the firewall rules in place (and required by the webmail system) is described in full in the "puppet_documentation" file referenced later in this document.  In brief, connections to/from servers in the private subnet are allowed via IMAP, SMTP and memcached (port 11211). Connections to the front end web server are allowed from any IP via HTTPS.  Visiting the insecure http version of our webpage results in a forced redirection to the secure page (https).  A 'phony' certificate is currently in place and requires users to add an exception within their web browser in order to access webmail services.
     As stated, IMAP connections are only allowed from servers within the private subnet, but further measures could be taken to force clients to connect via IMAPS, ensuring that IMAP login data is secured for transfer through the network.  There was some attempt to force connections through TLS, but this will have to be placed on the burden of future developers due to time constraints.
     SMTP connections also warrant the implementation of further security measures, such as forcing client-to-server connections to connect via the secure SMTP port, with SSL encryption.  Again, this burden will be placed on those developing this webmail system further, due to time constraints.
+    We did not address email filtering (client-side or ClamAV) but this was an intended feature for this webmail system.  Future developers should explore scanning emails via ClamAV before routing them to user mailboxes!
 
-3) Concerns for Future Development/Maintenance:
+
+
+
+4) Concerns for Future Development/Maintenance:
 (a discussion of the work needed to complete the project and what might be needed to maintain t for continued future use, and ways that installation and maintenance tasks can be automated:)
     *much of the configuration is automated, with the caveat that the system must be reconfigured when redeployed due to IP and DNS differences
+    
+    Security concerns have already been stated in the security issues section.  Future developers/maintainers should pay special attention to the security issues section, addressing SMTP SSL connections, IMAPS connections, ClamAV filtering, and HTTPS/SMTPS certificate acquisition!
 
 
-4) Project Documentation: 
+
+
+
+5) Project Documentation: 
 (documentation of the project, both for the system administration work involved and for your user community:)
     The git commit log reflects some but not all contributions to the project, and since commit history will vanish after the project's deadline it seems necessary to document this webmail system's build process and configuration details thoroughly enough to allow future development to occur and to allow hypothetical users to request support.
 Many configuration details can be gleamed from the puppet manifest files for relevant puppet modules.
