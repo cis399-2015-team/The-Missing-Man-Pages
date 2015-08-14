@@ -44,6 +44,9 @@ We assure you that there is SOME interesting content in this writeup despite the
     We did not explore LDAP as we had hoped, but Roundcube has LDAP plugins and LDAP would fulfill password-change feature requirements and allow us to expand our feature set extensively.
 (4, B) System Maintence:
     Much of the configuration is automated, with the caveat that the system must be reconfigured when redeployed due to IP and DNS differences.  We claim that there are only a few configuration changes necessary to redeploy webmail services on a new set of machines.  Redeployment is mainly addressed in this document, so future developers will have to consult software-specific documentation or deduce configuration details from the puppet modules in order to more deeply understand our system.
+    Maintenance Concerns:
+        See user-related concerns (i.e. overflowing mailboxes, malicious activity monitoring, user account security)
+        In the event that a fallback server is needed to replace the main server for updates, a fallback server must be properly configured and tested through a seperate front-end web server.
 
 
 (5) Project Documentation: 
