@@ -7,7 +7,7 @@ These include:
   MySQL (Database Service)
   Dovecot (IMAP/IMAPS Connections Services)
   Sendmail (Mail Services)
-  PAM (User Authentication)
+  PAM (User Authentication - /etc/passwd style) Note: Non-IMAP/SSH logins to the server that houses user credentials are restricted for a reason.
   PHP (Specifically php5-cgi and php5-fpm)
   Memcached (Memcached and php5-memcache, for session storage, attachment storage and possible performance increase)
   
