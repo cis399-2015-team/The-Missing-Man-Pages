@@ -14,14 +14,14 @@ These include:
 FIREWALL RULES:
   1) MySQL requires port 3306 to be open on the host for connection to both the front end and IMAP/SMTP server.
   2) A custom TCP rule is necessary for memcached to work properly.  This means port 11211 must be open on all three internal system servers.
-  3) IMAP and IMAPS run over ports 143 and 993 respectively. Currenly IMAPS is not currently configured, with the mitigating excuse that only internal servers are allowed to connect via IMAP.
+  3) IMAP and IMAPS run over ports 143 and 993 respectively. IMAPS is not currently configured, with the mitigating excuse that only internal servers are allowed to connect via IMAP.
   4) HTTPS (and HTTP for redirection and user support) requires ports 80 and 443 to be open to the world.
   5) SMTP over port 25 is open to the world.  This is necessary for us to receive mail from other domains.
   
 The instance that holds the master database records has the following system context...
   MySQL: This is the most important piece of software on the master database server (except perhaps puppet).  The master server must have a running MySQL service, which must be allowed to communicate with the other two servers via the default MySQL port.
          This server must hold the database records for webmail services.  
-         Roundcube provides a database initialization file specifically for MySQL (and other database software systems).  This file must be loaded into the roundcubemail database and grants must be given to the front-end server's private IP.
+         Roundcube provides a database initialization file specifically for MySQL (and other database software systems).  This file must be loaded into the roundcubemail database and grants must be given to the front-end server's private IP.
   Memcached
   PHP
 
