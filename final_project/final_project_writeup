@@ -26,13 +26,12 @@ We assure you that there is SOME interesting content in this writeup despite the
 
 
 
-
-
 (3) Security Issues:
     An explanation of the firewall rules in place (and required by the webmail system) is described in full in the "puppet_documentation" file referenced later in this document.  In brief, connections to/from servers in the private subnet are allowed via IMAP, SMTP and memcached (port 11211). Connections to the front end web server are allowed from any IP via HTTPS.  Visiting the insecure http version of our webpage results in a forced redirection to the secure page (https).  A 'phony' certificate is currently in place and requires users to add an exception within their web browser in order to access webmail services.
     As stated, IMAP connections are only allowed from servers within the private subnet, but further measures could be taken to force clients to connect via IMAPS, ensuring that IMAP login data is secured for transfer through the network.  There was some attempt to force connections through TLS, but this will have to be placed on the burden of future developers due to time constraints.
     SMTP connections also warrant the implementation of further security measures, such as forcing client-to-server connections to connect via the secure SMTP port, with SSL encryption.  Again, this burden will be placed on those developing this webmail system further, due to time constraints.
-    We did not address email filtering (client-side or ClamAV) but this was an intended feature for this webmail system.  Future developers should explore scanning emails via ClamAV before routing them to user mailboxes!
+    We use a simple DNS blacklist (zen.spamhaus.org) to filter spam.  We did not implement client-side email filtering or scanning through ClamAV but this was an intended feature for this webmail system.  Future developers should explore scanning emails via ClamAV before routing them to user mailboxes!
+
 
 
 
@@ -47,6 +46,7 @@ We assure you that there is SOME interesting content in this writeup despite the
     Maintenance Concerns:
         See user-related concerns (i.e. overflowing mailboxes, malicious activity monitoring, user account security)
         In the event that a fallback server is needed to replace the main server for updates, a fallback server must be properly configured and tested through a seperate front-end web server.
+
 
 
 (5) Project Documentation: 
