@@ -8,7 +8,10 @@ We assure you that there is SOME interesting content in this writeup despite the
     
 (1, B)   Testing and Verification:
     Initial project testing during configuration involved checking a few log files and tailing error messages by reconfiguring properly.  As the project has grown more complex it has become necessary to implement puppet modules in order to control the configuration of system components more quickly/easily.  With our current puppet modules, we are able to completely switch responsibilities between the two puppet agent instances with only a few extra configuration changes needed.
-    After the initial build/configuration, blackbox testing on webmail features was allowed to begin. This required confirming essential mail features remained functional after any substantial configuration changes. 
+    After the initial build/configuration, blackbox testing on webmail features was allowed to begin. This required confirming essential mail features remained functional after any substantial configuration changes. User authentication, sending/receiving mail, and session data storage were some of the commonly tested features after changes to configuration.
+    Once our final configuration was established, we performed glass-box testing against all security claims (file access restrictions, forced secure protocols, etc.) and reliability requirements (responses to large quantities of mail being sent simultaneously). Most of these tests involved actively monitoring log files while making demands on the system.
+
+
 
 
 
