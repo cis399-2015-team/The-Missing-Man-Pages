@@ -1,5 +1,5 @@
 The Missing Man Pages team has deployed webmail services on three AWS EC2 instances loaded with the standard Ubuntu AMI.
-
+PUPPET MODULE OVERVIEW:
 Webmail services depend on several software systems but these dependencies are split across servers.
 These include:
   Roundcube Webmail (Front end interface)
@@ -10,6 +10,15 @@ These include:
   PAM (User Authentication)
   PHP (Specifically php5-cgi and php5-fpm)
   Memcached (Memcached and php5-memcache, for session storage, attachment storage and possible performance increase)
+  
+FIREWALL RULES:
+  1) MySQL requires port 3306 to be open on the host for connection to both the front end and IMAP/SMTP server.
+  2) A custom TCP rule is necessary for memcached to work properly.  This means port 11211 must be open on
+  all three internal system servers.
+  3) IMAP and IMAPS run over ports 143 and 993 respectively. Currenly IMAPS is not currently configured, with the
+  mitigating excuse that only internal servers are allowed to connect via IMAP.
+  4) HTTPS (and HTTP for redirection and user support) requires ports 80 and 443 to be open to the world.
+  5) SMTP over port 25 is open to the world.  This is necessary for us to receive mail from other domains.
   
 The instance that holds the master database records has the following system context...
   MySQL: This is the most important piece of software on the master database server (except perhaps puppet)
@@ -34,13 +43,21 @@ The front end server has the following requirements:
   Memcached
   PHP
   
-In order to ensure that the systems meet these requirements, we have deployed several puppet modules.
+In order to ensure that the systems meets these software requirements we have deployed several puppet modules.
+The following modules warrant explanation:
   masterdb module: This module is included only in the puppet master's node definition. The master
     is responsible for holding the only copy of the MySQL database accessed by the other two servers.
   
   memcachemod:  This module is deployed on each server, and memcached data is redundantly placed on each.
     This module ensures that all packages and services required for memcaching are installed/running.
+    
+  phpmod: Deployed on each server and necessary for memcached usage, front end input processing, and MySQL services. 
   
-  phpmod:   This module is deployed on each server.
+  webmail: Ensures that a configured, secure, and bloat-free roundcube-1.1.2 directory is placed in /var/www, and
+    that all necessary front-end services not declared in other modules are properly configured and running.
   
+  apache2: We have recently replaced our lighttpd module with apache2 for .htaccess file support.  This allows
+    us to manage file access on a per-directory basis in order to disallow access to some of our more revealing 
+    configuration and system files over the network.
+
   
