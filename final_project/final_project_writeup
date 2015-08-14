@@ -1,5 +1,5 @@
 Our final project writeup is organized in like to the Final Project Guidelines bulletpoints specified.
-We assure you that there is SOME interesting content in this writeup despite the fact that we did not create a mainframe for Bob to mend and defend, where the user lives outside the net and inputs games for pleasure, as we originally intended.
+We assure you that there is SOME interesting content in this writeup despite the fact that we did not create a mainframe for Bob to mend and defend, where the user lives outside the net and inputs games for pleasure, as we had originally intended.
 
 
 (1) (concrete goals for your project, and methods of testing and verification you will apply to determine whether those goals were met:)
@@ -39,18 +39,15 @@ We assure you that there is SOME interesting content in this writeup despite the
 
 (4) Concerns for Future Development/Maintenance:
 (a discussion of the work needed to complete the project and what might be needed to maintain t for continued future use, and ways that installation and maintenance tasks can be automated:)
-    *much of the configuration is automated, with the caveat that the system must be reconfigured when redeployed due to IP and DNS differences
-    
+(4, A) Completing the Project: 
     Security concerns have already been stated in the security issues section.  Future developers/maintainers should pay special attention to the security issues section, addressing SMTP SSL connections, IMAPS connections, ClamAV filtering, and HTTPS/SMTPS certificate acquisition!
-
-
-
+    We did not explore LDAP as we had hoped, but Roundcube has LDAP plugins and LDAP would fulfill password-change feature requirements and allow us to expand our feature set extensively.
+(4, B) System Maintence:
+    Much of the configuration is automated, with the caveat that the system must be reconfigured when redeployed due to IP and DNS differences.  We claim that there are only a few configuration changes necessary to redeploy webmail services on a new set of machines.  Redeployment is mainly addressed in this document, so future developers will have to consult software-specific documentation or deduce configuration details from the puppet modules in order to more deeply understand our system.
 
 
 (5) Project Documentation: 
 (documentation of the project, both for the system administration work involved and for your user community:)
     The git commit log reflects some but not all contributions to the project, and since commit history will vanish after the project's deadline it seems necessary to document this webmail system's build process and configuration details thoroughly enough to allow future development to occur and to allow hypothetical users to request support.
-Many configuration details can be gleamed from the puppet manifest files for relevant puppet modules.
-We have also provided a "puppet_documentation" file which can be found in this directory and provides details on how the responsibilities of this webmail system are split across servers. Please see final_project/puppet_documentation for a more complete response to this question/concern.
-A large portion of the Roundcube configuration process was drawn from the roundcube "INSTALLATION" and "CONFIGURATION" files provided by the Roundcube framework software package, as well as the 'howto' documentation on the Roundcube website.
-Summarizing the work involved in the project, emphasis was placed on session sharing, basic security plugs, and automating configuration via custom puppet modules. There was also an importance placed on the design of our system on three seperate hosts being secured, with some important features such as forcing client-to-server secure SMTP connections and secure password changing mechanisms being left for future developers to implement.
+    Many configuration details can be gleamed from the puppet manifest files for relevant puppet modules.  We have also provided a "puppet_documentation" file which can be found in this directory and provides details on how the responsibilities of this webmail system are split across servers. Please see final_project/puppet_documentation for a more complete response to this question/concern.  A large portion of the Roundcube configuration process was drawn from the roundcube "INSTALLATION" and "CONFIGURATION" files provided by the Roundcube framework software package, as well as the 'howto' documentation on the Roundcube website.
+    Summarizing the work involved in the project, emphasis was placed on session sharing, basic security plugs, and automating configuration via custom puppet modules. There was also an importance placed on the design of our system on three seperate hosts being secured, with some important features such as forcing client-to-server secure SMTP connections and secure password changing mechanisms being left for future developers to implement.
